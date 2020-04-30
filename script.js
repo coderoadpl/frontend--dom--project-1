@@ -44,8 +44,11 @@ function extractPixelsFromString(pixelsString) {
 function move(deltaX = 0, deltaY = 0) {
     const currentLeft = extractPixelsFromString(circle.style.left)
     const currentTop = extractPixelsFromString(circle.style.top)
+
     circle.style.left = currentLeft + deltaX + 'px'
     circle.style.top = currentTop + deltaY + 'px'
+
+    displayPosition()
 }
 
 function moveDown(deltaTop = 10) {
@@ -65,13 +68,15 @@ function moveLeft(deltaLeft = 10) {
 }
 
 function displayPosition() {
+    container.innerHTML = ''
+
     const position = circle.getBoundingClientRect()
 
     const pX = document.createElement('p')
     const pY = document.createElement('p')
 
-    pX.innerText = 'Position X: ' + position.x
-    pY.innerText = 'Position Y: ' + position.y
+    pX.innerText = 'Position X: ' + (position.x + position.width / 2)
+    pY.innerText = 'Position Y: ' + (position.y + position.height / 2)
 
     container.appendChild(pX)
     container.appendChild(pY)
