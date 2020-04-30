@@ -1,8 +1,18 @@
-const circle = document.createElement('div')
+function createCircle(containerSelector) {
 
-circle.style.width = '100px'
-circle.style.height = '100px'
-circle.style.backgroundColor = 'blue'
-circle.style.borderRadius = '50%'
+    const container = document.querySelector(containerSelector)
 
-document.body.appendChild(circle)
+    if (!container) return
+
+    const circle = document.createElement('div')
+
+    circle.style.width = '100px'
+    circle.style.height = '100px'
+    circle.style.backgroundColor = 'blue'
+    circle.style.borderRadius = '50%'
+
+    container.appendChild(circle)
+
+}
+
+createCircle('body')
