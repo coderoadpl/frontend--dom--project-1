@@ -20,24 +20,31 @@ function createCircle(containerSelector) {
 
 }
 
+function extractPixelsFromString(pixelsString) {
+    return Number(pixelsString.replace('px', ''))
+}
+
+function move(deltaX = 0, deltaY = 0) {
+    const currentLeft = extractPixelsFromString(circle.style.left)
+    const currentTop = extractPixelsFromString(circle.style.top)
+    circle.style.left = currentLeft + deltaX + 'px'
+    circle.style.top = currentTop + deltaY + 'px'
+}
+
 function moveDown(deltaTop = 10) {
-    const currentTop = Number(circle.style.top.replace('px', ''))
-    circle.style.top = currentTop + deltaTop + 'px'
+    move(0, deltaTop)
 }
 
 function moveRight(deltaLeft = 10) {
-    const currentLeft = Number(circle.style.left.replace('px', ''))
-    circle.style.left = currentLeft + deltaLeft + 'px'
+    move(deltaLeft, 0)
 }
 
 function moveUp(deltaTop = 10) {
-    const currentTop = Number(circle.style.top.replace('px', ''))
-    circle.style.top = currentTop - deltaTop + 'px'
+    move(0, -deltaTop)
 }
 
 function moveLeft(deltaLeft = 10) {
-    const currentLeft = Number(circle.style.left.replace('px', ''))
-    circle.style.left = currentLeft - deltaLeft + 'px'
+    move(-deltaLeft, 0)
 }
 
 const circle = createCircle('body')
