@@ -88,7 +88,7 @@ const startCircleGame = (function () {
     }
 
     function keyDownEventHandler(event) {
-
+        
         switch (event.key) {
             case 'ArrowUp':
                 moveUp()
@@ -106,6 +106,20 @@ const startCircleGame = (function () {
                 break
         }
 
+        window.removeEventListener(
+            'keydown',
+            keyDownEventHandler
+        )
+
+    }
+
+    function keyUpEventHandler() {
+
+        window.addEventListener(
+            'keydown',
+            keyDownEventHandler
+        )
+
     }
 
     function init() {
@@ -117,6 +131,10 @@ const startCircleGame = (function () {
         window.addEventListener(
             'keydown',
             keyDownEventHandler
+        )
+        window.addEventListener(
+            'keyup',
+            keyUpEventHandler
         )
     }
 
